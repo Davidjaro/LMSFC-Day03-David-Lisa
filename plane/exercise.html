@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Your Page Events</title>
+	<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+	<header>
+		<h1>jQuery Events</h1>
+	</header>
+	
+	<article class="canvas">
+		
+		<div id="moveme" class="badge"><img src="airplane.png"></div>
+		
+	</article>
+
+	<div id="bombe"></div>
+
+	<footer>
+		<p><a href="http://www.codefactory.wien/">&copy; Code Factory</a></p>
+	</footer>
+
+	<!-- load local copy of jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- 	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+
+	<script src="./mouseFollowerPlug/jquery.mousefollower.js"></script> -->
+ <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<!-- my script -->
+	<script>
+
+$(function(){
+
+
+   
+   // $('.canvas').mousefollower();
+
+var  horizontal = 0 ;
+var  vertical = 0;
+
+$(".canvas").on("click", function(mimi){
+	$(this).mousemove(function(coord){
+  horizontal = coord.pageX -150;
+  vertical = coord.pageY -150;
+
+   $(".badge").css(
+   		{left: horizontal+"px", 
+  		top: vertical+"px"}
+  		);
+
+	
+
+
+
+
+	});
+});
+
+$(".canvas").on("dblclick", function(){
+	$(this).off("mousemove");
+	});
+
+ // $("#bombe").droppable({
+ //      drop: function(mimi) {
+ //      	alert("hi");
+ //        $(this).css("background-color", "blue");
+ //      }
+ //    });
+
+});
+
+
+
+
+	</script>
+
+</body>
+</html>
