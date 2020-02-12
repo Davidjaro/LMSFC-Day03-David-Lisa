@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>jQuery animation</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+	<style>
+		* { padding: 0; margin: 0; }
+		body { font-family: sans-serif; font-size: 100%; margin: 10px; color: #222; background-color: #eee; }
+		#animate { position: absolute; top: 80px; left: 100px; width: 180px; height: 120px; font-size: 2em; text-align: center; line-height: 118px; color: #fff; background-color: #00c; border: 2px solid #006; border-radius: 5px; display: none; }
+		li{
+			background: red;
+		}
+		#animated{
+			margin-top: 200px;
+		}
+	</style>
+</head>
+<body>
+
+	<h1>jQuery Animation</h1>
+	
+	<div id="animate">ANIMATE</div>
+
+	<div id="animated">
+        <h1>Todo List</h1>
+    </div>
+    	<ul>
+    		<input type="text" name="" placeholder="Type here to add a new todo task">
+    		<button type="button" name="submit" value="">Submit</button>
+            <li>remove item</li>
+            <li>remove item</li>
+            <li>remove item</li>
+            <li>remove item</li>
+            <li>remove item</li>
+    	</ul>
+
+	<script>
+		
+		$("#animate").fadeIn("slow").delay(5000).fadeOut("slow")
+		$("button").click(function(){
+			var text = $("input").val();
+			var newli = $("<li></li>").text(text);
+			$("ul li:last-child").after(newli);
+			
+		});
+		//delegated Eventhandler
+		$('ul').on('click', "li", function() {
+                $(this).animate({
+                        opacity: 0.0,
+                        paddingLeft: '+=80'
+                    }, 500, function() {
+                        $(this).remove();
+                    });
+                });
+
+	</script>
+
+</body>
+</html>
